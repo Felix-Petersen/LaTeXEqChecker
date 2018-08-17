@@ -78,6 +78,16 @@ class Equation:
         """
         Computes and saves the result of the check using `check_equation`.
         """
+        if r'\text' in self.left_presentation + self.right_presentation:
+            # Avoid the case of an equation within a text within a formula
+            return
+        if len((self.left_content + self.right_content).replace(' ', '')) <= 2 and \
+            (
+                'i' in (self.left_content + self.right_content) or
+                'j' in (self.left_content + self.right_content)
+            ):
+            return
+
         if self.left_content.replace(' ', '') != '' and self.right_content.replace(' ', '') != '':
             self.res = self.check_equation(query=self, lets=self.lets)
         else:
@@ -96,25 +106,20 @@ class Equation:
         
         :return: comparator including the result
         """
+        if self.res == '':
+            return str(self.comparator)
+
         result_comparator = r'\overset{'
         if self.res.find("True") != -1:
             result_comparator += r'\text{\color{green}\cmark}'
         if self.res.find("False") != -1:
             result_comparator += r'\text{\color{red}\xmark}'
-        if self.res.find("None") != -1:
-            result_comparator += r'\text{\color{orange}?~}'
+        # if self.res.find("None") != -1:
+        #     result_comparator += r'\text{\color{orange}?~}'
         if self.res.find("new") != -1:
             result_comparator += r'\text{\color{blue} def}'
-        if self.res.replace("True", '').replace('False', '').replace('new', '').replace('None', '').replace(' ', '') != '':
-            result_comparator += r'\text{' + self.res.replace("True", '').replace('False', '').replace('new', '').replace('None', '') + r'}'
-
-
-        # # If None is inside res but "None" != res
-        # elif self.res.find("None") != -1:
-        #     if len(self.res) > 32:
-        #         # res = r'\footnote{' + res + r'}'
-        #         res = self.res[:32]
-        #     result_comparator += r'\text{\color{orange}?~' + self.res + r'}'
+        # if self.res.replace("True", '').replace('False', '').replace('new', '').replace('None', '').replace(' ', '') != '':
+        #     result_comparator += r'\text{' + self.res.replace("True", '').replace('False', '').replace('new', '').replace('None', '') + r'}'
 
         result_comparator += '}{' + str(self.comparator) + r'}'
 
