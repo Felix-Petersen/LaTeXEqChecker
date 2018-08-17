@@ -21,7 +21,7 @@ Here are some examples for the annotation of equations:
 
 ### German
 
-#### LaTeXEqChecker - Überprüfung mathematischer Semantik in LaTeX Dokumenten
+#### LaTeXEqChecker - Ein Framework zur Überprüfung mathematischer Semantik in LaTeX Dokumenten
 
 Mathe-Übungsblätter zu korrigieren, ist eine mühsame Aufgabe - besonders dann, wenn die Abgabe viele falsche Gleichungen enthält, während das Ergebnis sogar richtig zu sein scheint.
 Aus diesem Grund entwickle ich ein Programm, das Gleichungen in LaTeX-Dokumenten auf Korrektheit überprüft.
@@ -32,7 +32,7 @@ Das Programm basiert auf Python und überprüft die Gleichungen mithilfe verschi
 
 ### English
 
-#### LaTeXEqChecker - Checking mathematical semantics in LaTeX documents
+#### LaTeXEqChecker - A framework for checking mathematical semantics in LaTeX documents
 
 Correcting students math problem sets is a laborious work - especially if there are lots of wrong equations, while the result is correct or at least seems to be.
 For the purpose of easing this work I developed a software that checks whether equations are correct.
