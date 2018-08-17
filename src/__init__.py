@@ -13,4 +13,4 @@ import src.sympy
 
 # import src.semantic_enrichment
 
-# import src.latex2sympy
+import src.latex2sympy
